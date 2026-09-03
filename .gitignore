@@ -1,0 +1,17 @@
+# Python
+__pycache__/
+*.pyc
+venv/
+.venv/
+*.egg-info/
+
+# Database (each dev/demo should generate their own via seed.py)
+backend/placement.db
+
+# Env
+.env
+
+# OS/editor
+.DS_Store
+.vscode/
+*.swp

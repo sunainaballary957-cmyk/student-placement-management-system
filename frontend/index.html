@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Placement OS — Sign in</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/css/style.css" />
+</head>
+<body>
+
+<div class="top-accent" aria-hidden="true"></div>
+
+<div class="auth-shell">
+  <div class="auth-visual">
+    <div class="hero-grid" aria-hidden="true"></div>
+    <div class="brand-mark"><span class="brand-dot"></span> PLACEMENT OS</div>
+
+    <div>
+      <div class="auth-signal-graphic" aria-hidden="true">
+        <span class="signal-orbit signal-orbit-one"></span>
+        <span class="signal-orbit signal-orbit-two"></span>
+        <span class="signal-core"></span>
+      </div>
+      <h1 class="auth-headline"><span class="headline-line">Every student's</span> <span class="headline-line">eligibility, <span class="headline-gradient">explained</span></span> <span class="headline-line">not just decided.</span></h1>
+      <p class="hero-copy">A placement console that tells you exactly why a company is a match, or exactly what's missing when it isn't.</p>
+
+      <div class="beacon-row">
+        <div class="beacon-chip beacon-preview beacon-preview-green"><span class="dot"></span><span><strong>TechNova</strong><small>Eligible · Python + SQL</small></span><b>98%</b></div>
+        <div class="beacon-chip beacon-preview beacon-preview-amber"><span class="dot"></span><span><strong>DataForge</strong><small>Skill gap · Machine Learning</small></span><b>72%</b></div>
+        <div class="beacon-chip beacon-preview beacon-preview-red"><span class="dot"></span><span><strong>CloudSphere</strong><small>Not eligible · CGPA below 8.0</small></span><b>34%</b></div>
+      </div>
+    </div>
+
+    <div class="hero-footer"><p class="eyebrow">Student Placement Management System — Batch 2027</p><span class="scroll-cue" aria-hidden="true">↓</span></div>
+  </div>
+
+  <div class="auth-form-side">
+    <div style="width:100%; max-width:380px;">
+
+      <!-- LOGIN FORM -->
+      <div id="loginView" class="auth-form-card">
+        <h2 style="font-size:1.5rem;">Welcome back</h2>
+        <p style="margin-top:6px; margin-bottom:26px;">Sign in to your placement dashboard.</p>
+
+        <form id="loginForm">
+          <div class="field">
+            <label for="loginEmail">Email</label>
+            <div class="input-with-icon">
+              <svg aria-hidden="true"><use href="#icon-mail"></use></svg>
+              <input id="loginEmail" type="email" placeholder="you@campus.edu" required />
+            </div>
+          </div>
+          <div class="field">
+            <label for="loginPassword">Password</label>
+            <div class="input-with-icon">
+              <svg aria-hidden="true"><use href="#icon-lock"></use></svg>
+              <input id="loginPassword" type="password" placeholder="••••••••" required />
+              <button class="password-toggle" id="toggleLoginPassword" type="button" aria-label="Show password" title="Show password"><svg aria-hidden="true"><use href="#icon-eye"></use></svg></button>
+            </div>
+          </div>
+          <div class="error-text" id="loginError"></div>
+          <button class="btn btn-primary btn-block auth-submit" type="submit"><span class="button-label">Sign in</span><span class="button-spinner" aria-hidden="true"></span></button>
+        </form>
+
+        <p style="margin-top:18px; font-size:0.86rem;">
+          New here? <a href="#" class="link-accent" id="showRegister">Create a student account</a>
+        </p>
+        <p style="margin-top:10px; font-size:0.78rem; color:var(--text-muted);">
+          Demo: student1@campus.edu / password123 &nbsp;·&nbsp; admin@campus.edu / admin123
+        </p>
+      </div>
+
+      <!-- REGISTER FORM -->
+      <div id="registerView" class="hidden auth-form-card">
+        <h2 style="font-size:1.5rem;">Create your account</h2>
+        <p style="margin-top:6px; margin-bottom:26px;">Register once, track every placement drive from here.</p>
+
+        <form id="registerForm">
+          <div class="field">
+            <label for="regName">Full name</label>
+            <input id="regName" type="text" placeholder="Jane Doe" required />
+          </div>
+          <div class="field">
+            <label for="regEmail">Email</label>
+            <div class="input-with-icon">
+              <svg aria-hidden="true"><use href="#icon-mail"></use></svg>
+              <input id="regEmail" type="email" placeholder="you@campus.edu" required />
+            </div>
+          </div>
+          <div class="field">
+            <label for="regBranch">Branch</label>
+            <select id="regBranch">
+              <option>Computer Science</option>
+              <option>Information Technology</option>
+              <option>Electronics</option>
+              <option>Mechanical</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="regYear">Batch year</label>
+            <input id="regYear" type="number" value="2026" required />
+          </div>
+          <div class="field">
+            <label for="regPassword">Password</label>
+            <div class="input-with-icon">
+              <svg aria-hidden="true"><use href="#icon-lock"></use></svg>
+              <input id="regPassword" type="password" placeholder="At least 6 characters" required minlength="6" />
+              <button class="password-toggle" id="toggleRegPassword" type="button" aria-label="Show password" title="Show password"><svg aria-hidden="true"><use href="#icon-eye"></use></svg></button>
+            </div>
+            <div class="progress-bar" style="margin-top:6px;"><div class="progress-bar-fill" id="strengthBar" style="width:0%;"></div></div>
+          </div>
+          <div class="error-text" id="registerError"></div>
+          <button class="btn btn-primary btn-block" type="submit">Create account</button>
+        </form>
+
+        <p style="margin-top:18px; font-size:0.86rem;">
+          Already registered? <a href="#" class="link-accent" id="showLogin">Sign in</a>
+        </p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<svg class="auth-icon-sprite" aria-hidden="true">
+  <symbol id="icon-mail" viewBox="0 0 24 24"><path d="m3 6 9 6 9-6M4 5h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Z"/></symbol>
+  <symbol id="icon-lock" viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3m-4 4v3"/></symbol>
+  <symbol id="icon-eye" viewBox="0 0 24 24"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12Z"/><circle cx="12" cy="12" r="2.5"/></symbol>
+</svg>
+
+<script src="/static/js/api.js"></script>
+<script>
+  const authVisual = document.querySelector(".auth-visual");
+  authVisual.addEventListener("pointermove", (e) => {
+    const bounds = authVisual.getBoundingClientRect();
+    const x = (e.clientX - bounds.left) / bounds.width - 0.5;
+    const y = (e.clientY - bounds.top) / bounds.height - 0.5;
+    authVisual.style.setProperty("--pointer-x", `${x * 8}px`);
+    authVisual.style.setProperty("--pointer-y", `${y * 8}px`);
+  });
+  authVisual.addEventListener("pointerleave", () => {
+    authVisual.style.setProperty("--pointer-x", "0px");
+    authVisual.style.setProperty("--pointer-y", "0px");
+  });
+
+  const loginView = document.getElementById("loginView");
+  const registerView = document.getElementById("registerView");
+  document.getElementById("showRegister").onclick = (e) => { e.preventDefault(); loginView.classList.add("hidden"); registerView.classList.remove("hidden"); };
+  document.getElementById("showLogin").onclick = (e) => { e.preventDefault(); registerView.classList.add("hidden"); loginView.classList.remove("hidden"); };
+
+  function setupPasswordToggle(inputId, toggleId) {
+    const input = document.getElementById(inputId);
+    const toggle = document.getElementById(toggleId);
+    toggle.onclick = () => {
+      const showing = input.type === "text";
+      input.type = showing ? "password" : "text";
+      toggle.setAttribute("aria-label", showing ? "Show password" : "Hide password");
+      toggle.setAttribute("title", showing ? "Show password" : "Hide password");
+    };
+  }
+  setupPasswordToggle("loginPassword", "toggleLoginPassword");
+  setupPasswordToggle("regPassword", "toggleRegPassword");
+
+  // If already logged in, skip straight to the right dashboard
+  if (getToken()) {
+    window.location.href = getRole() === "admin" ? "admin.html" : "dashboard.html";
+  }
+
+  document.getElementById("loginForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const errorEl = document.getElementById("loginError");
+    errorEl.textContent = "";
+    const email = document.getElementById("loginEmail").value.trim();
+    const password = document.getElementById("loginPassword").value;
+    const submitButton = e.currentTarget.querySelector(".auth-submit");
+    submitButton.classList.add("is-loading");
+    submitButton.disabled = true;
+    try {
+      const data = await api("/auth/login", { method: "POST", body: { email, password }, auth: false });
+      setSession(data.access_token, data.role);
+      window.location.href = data.role === "admin" ? "admin.html" : "dashboard.html";
+    } catch (err) {
+      errorEl.textContent = err.message;
+      submitButton.classList.remove("is-loading");
+      submitButton.disabled = false;
+    }
+  });
+
+  document.getElementById("regPassword").addEventListener("input", (e) => {
+    const v = e.target.value;
+    let score = 0;
+    if (v.length >= 6) score += 34;
+    if (/[A-Z]/.test(v) && /[0-9]/.test(v)) score += 33;
+    if (/[^A-Za-z0-9]/.test(v)) score += 33;
+    const bar = document.getElementById("strengthBar");
+    bar.style.width = Math.min(score, 100) + "%";
+    bar.style.background = score < 40 ? "var(--signal-red)" : score < 75 ? "var(--signal-amber)" : "var(--signal-green)";
+  });
+
+  document.getElementById("registerForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const errorEl = document.getElementById("registerError");
+    errorEl.textContent = "";
+    const payload = {
+      name: document.getElementById("regName").value.trim(),
+      email: document.getElementById("regEmail").value.trim(),
+      branch: document.getElementById("regBranch").value,
+      batch_year: parseInt(document.getElementById("regYear").value, 10),
+      password: document.getElementById("regPassword").value,
+    };
+    try {
+      await api("/auth/register", { method: "POST", body: payload, auth: false });
+      // auto-login right after registering
+      const data = await api("/auth/login", { method: "POST", body: { email: payload.email, password: payload.password }, auth: false });
+      setSession(data.access_token, data.role);
+      window.location.href = "dashboard.html";
+    } catch (err) {
+      errorEl.textContent = err.message;
+    }
+  });
+</script>
+</body>
+</html>

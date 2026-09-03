@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Placement OS — Admin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/css/style.css" />
+</head>
+<body>
+
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="brand-mark"><span class="brand-dot"></span> PLACEMENT OS</div>
+
+    <nav class="sidebar-nav">
+      <div class="nav-item active" data-section="analytics"><svg aria-hidden="true"><use href="#icon-chart"></use></svg>Analytics</div>
+      <div class="nav-item" data-section="companies"><svg aria-hidden="true"><use href="#icon-building"></use></svg>Manage companies</div>
+      <div class="nav-item" data-section="students"><svg aria-hidden="true"><use href="#icon-users"></use></svg>Students</div>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:12px;">
+        <div style="width:34px;height:34px;border-radius:50%;background:var(--brand-soft);color:var(--brand-hover);display:flex;align-items:center;justify-content:center;font-size:0.78rem;font-weight:700;">AD</div>
+        <div><div style="font-size:0.86rem; font-weight:600;">Placement Officer</div><div style="font-size:0.72rem; color:var(--text-muted);">Admin</div></div>
+      </div>
+      <button class="btn btn-secondary btn-block btn-sm" onclick="logout()">Log out</button>
+    </div>
+  </aside>
+
+  <main class="main-content">
+
+    <!-- ANALYTICS -->
+    <section id="section-analytics">
+      <div class="page-header">
+        <div><div class="eyebrow">Placement drive</div><div class="page-title">Analytics overview</div></div>
+      </div>
+
+      <div class="grid grid-4" style="margin-bottom:20px;">
+        <div class="card stat-card"><div class="stat-label">Students</div><div class="stat-value mono" id="statTotalStudents"><span class="loading-dot"></span></div></div>
+        <div class="card stat-card"><div class="stat-label">Companies visiting</div><div class="stat-value mono" id="statTotalCompanies"><span class="loading-dot"></span></div></div>
+        <div class="card stat-card"><div class="stat-label">Offers made</div><div class="stat-value mono" id="statTotalPlaced"><span class="loading-dot"></span></div></div>
+        <div class="card stat-card"><div class="stat-label">Placement %</div><div class="stat-value mono" id="statPlacementPct"><span class="loading-dot"></span></div></div>
+      </div>
+
+      <div class="grid grid-2">
+        <div class="card chart-card">
+          <h3 style="margin-bottom:14px;">Branch-wise placement</h3>
+          <div class="chart-wrap"><canvas id="branchChart" height="220"></canvas></div>
+        </div>
+        <div class="card chart-card">
+          <h3 style="margin-bottom:14px;">Placed vs unplaced</h3>
+          <div class="chart-wrap"><canvas id="pieChart" height="220"></canvas></div>
+        </div>
+      </div>
+      <div class="card" style="margin-top:18px;">
+        <h3 style="margin-bottom:14px;">Package (CTC) distribution across companies</h3>
+        <div class="chart-wrap"><canvas id="packageChart" height="120"></canvas></div>
+      </div>
+    </section>
+
+    <!-- COMPANIES -->
+    <section id="section-companies" class="hidden">
+      <div class="page-header">
+        <div><div class="eyebrow">Recruiters</div><div class="page-title">Manage companies</div></div>
+      </div>
+
+      <div class="grid grid-2">
+        <div class="card">
+          <h3 style="margin-bottom:14px;">Add a company</h3>
+          <form id="companyForm">
+            <div class="field"><label>Company name</label><input id="cName" required /></div>
+            <div class="field"><label>Role</label><input id="cRole" placeholder="e.g. Software Engineer" /></div>
+            <div class="field"><label>Package (LPA)</label><input id="cPackage" type="number" step="0.1" min="0" /></div>
+            <div class="field"><label>Minimum CGPA</label><input id="cMinCgpa" type="number" step="0.1" min="0" max="10" /></div>
+            <div class="field"><label>Eligible branches (comma separated, blank = all)</label><input id="cBranches" placeholder="Computer Science, Information Technology" /></div>
+            <div class="field"><label>Required skills (comma separated)</label><input id="cSkills" placeholder="Python, SQL" /></div>
+            <div class="field"><label>Description</label><textarea id="cDescription" rows="3"></textarea></div>
+            <button class="btn btn-primary" type="submit">Add company</button>
+          </form>
+        </div>
+
+        <div class="card">
+          <h3 style="margin-bottom:14px;">Visiting companies</h3>
+          <div id="companiesAdminList" style="display:flex; flex-direction:column; gap:12px;"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STUDENTS -->
+    <section id="section-students" class="hidden">
+      <div class="page-header">
+        <div><div class="eyebrow">Directory</div><div class="page-title">All students</div></div>
+      </div>
+      <div class="card">
+        <div class="student-form-card">
+          <h3 style="margin-bottom:14px;">Add a student</h3>
+          <form id="studentForm" class="form-grid">
+            <div class="field"><label for="sName">Full name</label><input id="sName" required /></div>
+            <div class="field"><label for="sEmail">Email</label><input id="sEmail" type="email" required /></div>
+            <div class="field"><label for="sBranch">Branch</label><input id="sBranch" required placeholder="e.g. Computer Science" /></div>
+            <div class="field"><label for="sBatch">Batch year</label><input id="sBatch" type="number" min="2000" max="2100" required /></div>
+            <div class="field"><label for="sPassword">Default password</label><input id="sPassword" type="password" minlength="6" required /></div>
+            <div class="form-action"><button class="btn btn-primary" type="submit"><svg aria-hidden="true"><use href="#icon-plus"></use></svg>Add student</button></div>
+          </form>
+        </div>
+        <table>
+          <thead><tr><th>Name</th><th>Branch</th><th>Batch</th><th>CGPA</th><th>Skills</th></tr></thead>
+          <tbody id="studentsTableBody"></tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<svg class="icon-sprite" aria-hidden="true">
+  <symbol id="icon-chart" viewBox="0 0 24 24"><path d="M4 19V5m0 14h16M8 16v-4m4 4V8m4 8V5"/></symbol>
+  <symbol id="icon-building" viewBox="0 0 24 24"><path d="M3 21h18M5 21V5l7-2 7 2v16M9 8h1m4 0h1m-6 4h1m4 0h1m-6 4h1m4 0h1"/></symbol>
+  <symbol id="icon-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2m9-10a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm5-7a4 4 0 0 1 0 7m4 10v-2a4 4 0 0 0-3-3.87M16 15h2a4 4 0 0 1 4 4v2"/></symbol>
+  <symbol id="icon-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+</svg>
+
+<script src="/static/js/api.js"></script>
+<script src="/static/js/admin.js"></script>
+</body>
+</html>
